@@ -1,0 +1,122 @@
+{% extends 'user/base.html' %}
+{% block view %}
+
+<div class="space_blank"></div>
+
+<div class="container">
+    <div class="row">
+      {% for i in product_obj %}
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="my-4 productDetails_ImgCarousel">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                class="swiper mySwiper2 custom_style">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    {% for j in i.product_image.all  %}
+                    <img src="{{ j.image.url }} " />
+                    {% endfor %}
+                  </div>
+                  
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
+              <div thumbsSlider="" class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <!-- <img src="{{ i.product_image.all }}" /> -->
+                    {% for j in i.product_image.all  %}
+                    <img src="{{ j.image.url }} " />
+                    {% endfor %}
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="my-4 productDetails_content">
+                <div class="specificProduct_title">
+                    <h3>{{i.title}}</h3>
+                </div>
+                <table class="product_descriptionDiv">
+                    <tbody>
+                        <tr>
+                            <td class="leftValue">Condition:</td>
+                            <td class="rightValue">{{i.condition}}</td>
+                        </tr>
+                        <tr>
+                            <td class="leftValue">Weight & Length:</td>
+                            <td class="rightValue">
+                                <select name="" id="">
+                                  {% for j in  i.set_weight.all %}  
+                                  <option value="1">{{j}}</option>
+                                  {% endfor %}
+                                    
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="leftValue">Color:</td>
+                            <td class="rightValue">
+                                <select name="" id="">
+                                  {% for j in i.product_colors.all%}  
+                                  <option value="1">{{j}}</option>
+                                  {%  endfor %}
+                                    
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                          <td class="leftValue">Type:</td>
+                          <td class="rightValue">{{i.product_type}}</td>
+                      </tr>
+                        </tr>
+                        <tr>
+                            <td class="leftValue">Delivery Method:</td>
+                            <td class="rightValue">
+                                <select name="" id="">
+                                  {% for j in i.delivery_method.all%}  
+                                  <option value="1">{{j}}</option>
+                                  {% endfor %}
+                                    
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="leftValue">Quantity:</td>
+                            <td class="rightValue">
+                                <input class="quantity_input" value="6" type="number">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="leftValue"></td>
+                            <td class="rightValue availableProducts">
+                                <span class="available_color"> 3 Available</span> / <span class="soldColor">5001
+                                    Sold</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="leftValue pricetxt">Price:</td>
+                            <td class="rightValue priceValue">
+                                US ${{i.item_price}}/ea
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <div class="availableProducts">
+                    <span>3 Available /5001 Sold</span>
+                </div> -->
+                <div class="productDetails_btnDiv">
+                    <a href="javascript:;" class="buyNow my-2">Buy Now</a>
+                    <!-- <a href="javascript:;" class="addCart my-2">Add to cart</a>
+                    <a href="javascript:;" class="watchList my-2">Add to Watchlist</a> -->
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock view %}

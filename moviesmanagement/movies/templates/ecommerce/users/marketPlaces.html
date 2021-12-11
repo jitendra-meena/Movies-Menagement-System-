@@ -1,0 +1,67 @@
+{% extends 'user/base.html' %}
+{% block mkt %}
+
+
+
+
+
+
+
+
+
+
+<div class="space_blank"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        {% for i in product_obj %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            
+            <!-- ======================================= Product Div ============================================ -->
+            <a href="{% url 'view_products' %}{{i.id}}" class="productDiv my-4">
+                <div class="productImgBox">
+                    <img src="/static/assets/images/hair.jpg" alt="" class="productImage img-fluid">
+                </div>
+                <div class="productContent">
+                    <div class="productTitle">
+                        <h4>{{i.title}}</h4>
+                    </div>
+                    
+                    <div class="productDetailStack">
+                        <div class="productPrice">
+                            <span>${{i.item_price}}</span>
+                        </div>
+                        <div class="productPickup">
+                            <span>{% for j in i.delivery_method.all %}  {{j}} {% endfor %}</span>
+                        </div>
+                        <div class="productDelivery_Cost">
+                            <span>{{i.product_type}}</span>
+                        </div>
+                        <div class="productItem_location">
+                            <span>Item Location 10 mile away</span>
+                        </div>
+                    </div>
+                    <div class="productSponsored">
+                        <span>Sponsored</span>
+                    </div>
+                </div>
+            </a>
+   
+        </div>
+        {% endfor %}
+
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock mkt %}
